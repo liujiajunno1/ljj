@@ -2,12 +2,29 @@
 #include<windows.h>
 #include<string>
 #include<graphics.h>
+#include<conio.h>
 
 #define wideth 600
 #define heighth 480
 
 using namespace std;
-
+void inputpwd(char pwd[], int size)
+{
+	char c;
+	int i{};
+	while(1)
+	{
+		c = _getch();//≤ªª·ªÿœ‘
+		if (c == '\r')
+		{
+			pwd[i] = 0;
+			break;
+		}
+		pwd[i++] = c;
+		cout << '*';
+	}
+	cout << endl;
+}
 void attack404() {
 	system("cls");
 	system("mode con cols=100 lines=100");
@@ -121,7 +138,7 @@ void menu()
 void login()
 {
 	string name;
-	string pwd;
+	char pwd[32];
 	while (1)
 	{
 		system("cls");
@@ -130,13 +147,9 @@ void login()
 		cin >> name;
 
 		cout << "«Î ‰»Îƒ˙µƒ√‹¬Î:";
-		cin >> pwd;
+		inputpwd(pwd,sizeof(pwd));
 
-		if (name == "¡ıºŒø°" && pwd == "ljj20011003")
-		{
-			break;
-		}
-		else if(name=="ljj"&&pwd=="20011003")
+		if (name == "ljj" &&!strcmp( pwd,"20011003"))
 		{
 			break;
 		}
